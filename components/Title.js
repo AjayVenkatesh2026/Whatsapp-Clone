@@ -1,4 +1,4 @@
-import { View, Text, StyleSheet } from "react-native";
+import { View, Text, StyleSheet, StatusBar } from "react-native";
 import { Colors } from "../constants/colors";
 import { Entypo, Ionicons } from "@expo/vector-icons";
 
@@ -28,7 +28,8 @@ export default Title;
 
 const styles = StyleSheet.create({
 	container: {
-		marginTop: 24,
+		minHeight: 20,
+		marginTop: StatusBar.currentHeight + 4,
 		padding: 16,
 		backgroundColor: Colors.primary600,
 		flexDirection: "row",

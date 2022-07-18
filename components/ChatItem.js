@@ -5,21 +5,26 @@ import { useLayoutEffect, useState } from "react";
 
 function ChatItem({ personObj, onPress }) {
 	const [maxDescriptionChars, setMaxDescriptionChars] = useState();
-	const [description, setDescription] = useState("");
+	// const [description, setDescription] = useState("");
 
-	function descriptionOnLayoutHandler(event) {
-		const width = event.nativeEvent.layout.width;
-		const chars = Math.floor(width / 7);
-		setMaxDescriptionChars(chars);
-	}
+	// function descriptionOnLayoutHandler(event) {
+	// 	const width = event.nativeEvent.layout.width;
+	// 	const chars = Math.floor(width / 7);
+	// 	setMaxDescriptionChars(chars);
+	// }
 
-	useLayoutEffect(() => {
-		if (personObj.description.length > maxDescriptionChars) {
-			setDescription(
-				personObj.description.slice(0, maxDescriptionChars - 3) + "..."
-			);
-		}
-	}, [maxDescriptionChars, personObj]);
+	// useLayoutEffect(() => {
+	// 	if (personObj.description.length > maxDescriptionChars) {
+	// 		console.log(
+	// 			personObj.name,
+	// 			personObj.description.length,
+	// 			maxDescriptionChars
+	// 		);
+	// 		setDescription(
+	// 			personObj.description.slice(0, maxDescriptionChars - 3) + "..."
+	// 		);
+	// 	}
+	// }, [maxDescriptionChars, personObj]);
 
 	return (
 		<Pressable onPress={onPress} style={styles.outerContainer}>
@@ -38,10 +43,10 @@ function ChatItem({ personObj, onPress }) {
 					<View style={styles.textContainer}>
 						<Text style={styles.name}>{personObj.name}</Text>
 						<Text
-							onLayout={descriptionOnLayoutHandler}
+							// onLayout={descriptionOnLayoutHandler}
 							style={styles.description}
 						>
-							{description}
+							{personObj.description}
 						</Text>
 					</View>
 					<View style={styles.badgeContainer}>
@@ -86,10 +91,11 @@ export default ChatItem;
 
 const styles = StyleSheet.create({
 	outerContainer: {
-		marginHorizontal: 8,
-		marginVertical: 8,
+		width: "100%",
+		padding: 8,
 	},
 	innerContainer: {
+		flex: 1,
 		alignSelf: "flex-start",
 		flexDirection: "row",
 	},
@@ -136,9 +142,10 @@ const styles = StyleSheet.create({
 	},
 	timeBadgeContainer: {
 		padding: 2,
+		alignSelf: "flex-end",
 	},
 	timeBadgeText: {
-		fontSize: 12,
+		fontSize: 10,
 	},
 	coloredTimeBadge: {
 		color: Colors.primary500,

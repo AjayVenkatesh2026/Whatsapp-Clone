@@ -17,27 +17,25 @@ export default function App() {
 
 	function TabNavigator() {
 		return (
-			<>
+			<View style={styles.screenContainer}>
 				<Title />
 				<Tab.Navigator
 					style={styles.tabContainer}
 					screenOptions={{
 						tabBarActiveTintColor: "white",
 						tabBarLabelStyle: {
-							fontSize: 16,
+							fontSize: 12,
 						},
 						tabBarStyle: {
 							backgroundColor: Colors.primary600,
-							margin: 0,
 						},
 						tabBarIndicatorStyle: {
-							height: 12,
+							backgroundColor: "white",
+							height: 4,
+							borderRadius: 4,
+							overflow: "hidden",
 						},
-						tabBarPressColor: Colors.primary700,
-						tabBarItemStyle: {
-							backgroundColor: Colors.primary600,
-							margin: 0,
-						},
+						tabBarPressColor: Colors.gray500,
 					}}
 				>
 					<Tab.Screen
@@ -62,7 +60,7 @@ export default function App() {
 						}}
 					/>
 				</Tab.Navigator>
-			</>
+			</View>
 		);
 	}
 
@@ -97,4 +95,9 @@ export default function App() {
 	);
 }
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+	screenContainer: {
+		flex: 1,
+		justifyContent: "flex-start",
+	},
+});
