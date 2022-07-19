@@ -2,7 +2,7 @@ import { Pressable, StyleSheet, View, Text } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import { Colors } from "../constants/colors";
 
-function StatusItem({ subject, description }) {
+function CallItem({ subject, description, received, videoCalled }) {
 	return (
 		<Pressable style={styles.outerContainer}>
 			<View style={styles.iconOuterContainer}>
@@ -12,13 +12,29 @@ function StatusItem({ subject, description }) {
 			</View>
 			<View style={styles.textContainer}>
 				<Text style={styles.subject}>{subject}</Text>
-				<Text style={styles.description}>{description}</Text>
+				<View style={styles.descriptionContainer}>
+					<Ionicons
+						style={received ? styles.receivedIcon : styles.sentIcon}
+						name="arrow-up-sharp"
+						size={20}
+						color={received ? Colors.red500 : Colors.primary600}
+					/>
+					<Text style={styles.description}>{description}</Text>
+				</View>
+			</View>
+			<View styles={styles.callIconContainer}>
+				<Ionicons
+					style={styles.callIcon}
+					name={videoCalled ? "videocam" : "call"}
+					color={"gray"}
+					size={24}
+				/>
 			</View>
 		</Pressable>
 	);
 }
 
-export default StatusItem;
+export default CallItem;
 
 const styles = StyleSheet.create({
 	outerContainer: {
@@ -26,8 +42,8 @@ const styles = StyleSheet.create({
 		padding: 8,
 		alignSelf: "flex-start",
 		flexDirection: "row",
+		alignItems: "center",
 	},
-	innerContainer: {},
 	iconOuterContainer: {
 		flex: 1,
 		alignItems: "center",
@@ -43,7 +59,7 @@ const styles = StyleSheet.create({
 		alignItems: "center",
 		justifyContent: "center",
 	},
-	icon: {},
+
 	textContainer: {
 		flex: 4,
 		alignItems: "flex-start",
@@ -54,10 +70,41 @@ const styles = StyleSheet.create({
 		fontWeight: "bold",
 		fontSize: 16,
 	},
+	descriptionContainer: {
+		height: 20,
+		flexDirection: "row",
+		alignItems: "center",
+		justifyContent: "flex-start",
+	},
+	sentIcon: {
+		paddingTop: 4,
+		transform: [
+			{
+				rotateZ: "45deg",
+			},
+		],
+	},
+	receivedIcon: {
+		paddingBottom: 4,
+		transform: [
+			{
+				rotateZ: "215deg",
+			},
+		],
+	},
 	description: {
 		fontSize: 14,
-		height: 20,
+		paddingLeft: 8,
 		width: "100%",
 		overflow: "hidden",
+	},
+
+	callIconContainer: {
+		flex: 1,
+		alignItems: "center",
+		justifyContent: "center",
+	},
+	callIcon: {
+		padding: 4,
 	},
 });

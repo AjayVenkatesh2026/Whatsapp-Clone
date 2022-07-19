@@ -30,6 +30,7 @@ function AllChatsScreen() {
 				keyExtractor={(item, index) => {
 					return item.name;
 				}}
+				showsVerticalScrollIndicator={false}
 			/>
 		</View>
 	);

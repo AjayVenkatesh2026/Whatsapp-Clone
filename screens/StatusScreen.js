@@ -6,14 +6,14 @@ import { RecentUpdates, ViewedUpdates } from "../data/status-data";
 
 function StatusScreen() {
 	return (
-		<ScrollView>
+		<ScrollView showsVerticalScrollIndicator={false}>
 			<View style={styles.container}>
 				<AddStatus />
 				<StatusSubtitle>Recent Updates</StatusSubtitle>
 				{RecentUpdates.map((item, index) => {
 					return (
 						<StatusItem
-							id={item.subject}
+							key={item.subject}
 							subject={item.subject}
 							description={item.description}
 						/>
@@ -23,7 +23,7 @@ function StatusScreen() {
 				{ViewedUpdates.map((item, index) => {
 					return (
 						<StatusItem
-							id={item.subject}
+							key={item.subject}
 							subject={item.subject}
 							description={item.description}
 						/>
