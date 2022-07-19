@@ -8,6 +8,9 @@ function AddStatus() {
 			<View style={styles.iconOuterContainer}>
 				<View style={styles.iconContainer}>
 					<Ionicons name="person" size={24} color="gray" />
+					<View style={styles.circleIconContainer}>
+						<Ionicons name="add" size={16} color="white" />
+					</View>
 				</View>
 			</View>
 			<View style={styles.textContainer}>
@@ -42,8 +45,22 @@ const styles = StyleSheet.create({
 		overflow: "hidden",
 		alignItems: "center",
 		justifyContent: "center",
+		flexDirection: "row",
+		position: "relative",
 	},
-	icon: {},
+	circleIconContainer: {
+		position: "absolute",
+		bottom: 3,
+		right: 3,
+		padding: 0,
+		margin: 0,
+		alignItems: "center",
+		justifyContent: "center",
+		borderWidth: 2,
+		borderColor: "white",
+		borderRadius: 16,
+		backgroundColor: Colors.primary500,
+	},
 	textOuterContainer: {
 		flex: 5,
 		flexDirection: "row",

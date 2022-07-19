@@ -78,7 +78,8 @@ export default function App() {
 					name="ChatScreen"
 					component={ChatScreen}
 					options={{
-						headerShown: true,
+						headerShown: false,
+						animationTypeForReplace: "push",
 					}}
 				/>
 			</Stack.Navigator>

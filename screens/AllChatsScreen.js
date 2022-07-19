@@ -7,8 +7,8 @@ function AllChatsScreen() {
 	// const dumPerson = chats[0];
 	const navigation = useNavigation();
 
-	function chatItemClickHanldler() {
-		navigation.navigate("ChatScreen");
+	function chatItemClickHanldler(person) {
+		navigation.navigate("ChatScreen", { personData: person });
 	}
 
 	function renderItemHandler(itemData) {
@@ -16,7 +16,7 @@ function AllChatsScreen() {
 			<ChatItem
 				key={itemData.item.name}
 				personObj={itemData.item}
-				onPress={chatItemClickHanldler}
+				onPress={chatItemClickHanldler.bind(this, itemData.item)}
 			/>
 		);
 	}
