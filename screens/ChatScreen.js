@@ -1,7 +1,10 @@
-import { StyleSheet, Text, View } from "react-native";
+import { FlatList, StyleSheet, Text, View } from "react-native";
 import { ImageBackground } from "react-native";
 import ChatHeader from "../components/ChatHeader";
 import MessageInputItem from "../components/MessageInputItem";
+import MessageItem from "../components/MessageItem";
+import { Colors } from "../constants/colors";
+import { messages } from "../data/messages-data";
 
 function ChatScreen({ navigation, route }) {
 	const person = route.params.personData;
@@ -22,7 +25,17 @@ function ChatScreen({ navigation, route }) {
 					style={styles.imageBackground}
 				>
 					<View style={styles.messagesContainer}>
-						<Text>Something</Text>
+						<FlatList
+							style={styles.messagesList}
+							data={messages}
+							renderItem={(itemData) => (
+								<MessageItem
+									key={itemData.item.message}
+									message={itemData.item}
+								/>
+							)}
+							inverted
+						/>
 					</View>
 					<MessageInputItem />
 				</ImageBackground>
@@ -40,9 +53,13 @@ const styles = StyleSheet.create({
 	imageBackground: {
 		flex: 1,
 		padding: 8,
-		opacity: 0.7,
+		opacity: 1,
+		backgroundColor: Colors.mask,
 	},
 	messagesContainer: {
 		flex: 1,
+	},
+	messagesList: {
+		width: "100%",
 	},
 });

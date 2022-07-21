@@ -87,18 +87,18 @@ export default function App() {
 	}
 
 	return (
-		<>
+		<View style={styles.screenContainer}>
 			<StatusBar style="light" backgroundColor={Colors.primary600} />
 			<NavigationContainer>
 				<StackNavigator />
 			</NavigationContainer>
-		</>
+		</View>
 	);
 }
 
 const styles = StyleSheet.create({
 	screenContainer: {
 		flex: 1,
-		justifyContent: "flex-start",
+		backgroundColor: Colors.primary600,
 	},
 });
