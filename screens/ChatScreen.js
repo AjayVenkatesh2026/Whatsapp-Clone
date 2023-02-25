@@ -24,20 +24,22 @@ function ChatScreen({ navigation, route }) {
 					resizeMode="cover"
 					style={styles.imageBackground}
 				>
-					<View style={styles.messagesContainer}>
-						<FlatList
-							style={styles.messagesList}
-							data={messages}
-							renderItem={(itemData) => (
-								<MessageItem
-									key={itemData.item.message}
-									message={itemData.item}
-								/>
-							)}
-							inverted
-						/>
+					<View style={styles.mask}>
+						<View style={styles.messagesContainer}>
+							<FlatList
+								style={styles.messagesList}
+								data={messages}
+								renderItem={(itemData) => (
+									<MessageItem
+										key={itemData.item.message}
+										message={itemData.item}
+									/>
+								)}
+								inverted
+							/>
+						</View>
+						<MessageInputItem />
 					</View>
-					<MessageInputItem />
 				</ImageBackground>
 			</View>
 		</>
@@ -52,8 +54,11 @@ const styles = StyleSheet.create({
 	},
 	imageBackground: {
 		flex: 1,
+	},
+	mask: {
+		flex: 1,
 		padding: 8,
-		opacity: 1,
+		opacity: 0.7,
 		backgroundColor: Colors.mask,
 	},
 	messagesContainer: {
